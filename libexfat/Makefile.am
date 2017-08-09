@@ -36,3 +36,4 @@ libexfat_a_SOURCES = \
 	time.c \
 	utf.c \
 	utils.c
+libexfat_a_CFLAGS = $(ublio_CFLAGS)

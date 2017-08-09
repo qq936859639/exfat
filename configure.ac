@@ -31,7 +31,14 @@ AC_PROG_CC_C99
 AC_PROG_RANLIB
 AM_PROG_AR
 AC_SYS_LARGEFILE
+AC_CANONICAL_HOST
 PKG_CHECK_MODULES([FUSE], [fuse])
+case $host in
+	*-freebsd*)
+		PKG_CHECK_MODULES([ublio], [ublio])
+		AC_DEFINE([HAVE_UBLIO], [], [Enable unaligned I/O caching layer])
+		;;
+esac
 AC_CONFIG_HEADERS([libexfat/config.h])
 AC_CONFIG_FILES([
 	libexfat/Makefile
